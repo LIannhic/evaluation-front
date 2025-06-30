@@ -9,14 +9,14 @@ export const vendeurGuard: CanActivateFn = (route, state) => {
   const notification = inject(NotificationService);
 
   if (
-    authService.user?.role == 'vendeur' ||
-    authService.user?.role == 'administrateur'
+    authService.user?.role == 'Cupidon' ||
+    authService.user?.role == 'Administrateur'
   ) {
     return true;
   }
 
   notification.show(
-    "Vous n'avez pas accès à cette page, connectez vous en tant que vendeur",
+    "Vous n'avez pas accès à cette page, connectez vous en tant que cupidon",
     'error'
   );
   return router.parseUrl('/connexion');

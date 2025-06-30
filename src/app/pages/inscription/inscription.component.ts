@@ -25,8 +25,8 @@ export class InscriptionComponent {
 
   formulaire = this.formBuilder.group({
     nom: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    courriel: ['', [Validators.required, Validators.email]],
+    mot_de_passe: ['', [Validators.required]],
   });
 
   onInscription() {

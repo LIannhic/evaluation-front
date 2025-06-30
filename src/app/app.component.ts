@@ -13,6 +13,7 @@ import { NotificationService } from './services/notification.service';
 export class AppComponent {
   authService = inject(AuthService);
   notification = inject(NotificationService);
+  title: any;
 
   onClickDeconnexion() {
     this.authService.deconnexion();

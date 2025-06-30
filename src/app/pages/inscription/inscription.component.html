@@ -1,7 +1,7 @@
 <form (ngSubmit)="onInscription()" [formGroup]="formulaire">
   <mat-form-field>
     <mat-label>Nom</mat-label>
-    <input matInput placeholder="Ex. john@doe.com" formControlName="nom" />
+    <input matInput placeholder="Votre nom" formControlName="nom" />
 
     @if (formulaire.get('nom')?.hasError('required')) {
     <mat-error>Le nom est requis</mat-error>
