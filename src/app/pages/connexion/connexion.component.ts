@@ -26,8 +26,8 @@ export class ConnexionComponent {
   authService = inject(AuthService)
 
   formulaire = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    courriel: ['', [Validators.required, Validators.email]],
+    mot_de_passe: ['', [Validators.required]],
   });
 
   onConnexion() {
