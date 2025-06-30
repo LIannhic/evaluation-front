@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "projet-dw2-25": {
+    "evaluation-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/projet-dw2-25",
+            "outputPath": "dist/evaluation-front",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "projet-dw2-25:build:production"
+              "buildTarget": "evaluation-front:build:production"
             },
             "development": {
-              "buildTarget": "projet-dw2-25:build:development"
+              "buildTarget": "evaluation-front:build:development"
             }
           },
           "defaultConfiguration": "development"

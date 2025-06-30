@@ -1,26 +1,65 @@
-<form (ngSubmit)="onAjoutProduit()" [formGroup]="formulaire">
-  <mat-form-field>
-    <mat-label>Nom</mat-label>
-    <input matInput placeholder="Ex. Pizza" formControlName="nom" />
-
-    @if (formulaire.get('nom')?.hasError('required')) {
-    <mat-error>Le nom est requis</mat-error>
-    } @else {
-    <mat-error>Le nom ne peut pas avoir plus de 20 caractères</mat-error>
+<form (ngSubmit)="onAjoutModel()" [formGroup]="formulaire">
+  <mat-form-field class="w-full">
+    <mat-label>Pseudo</mat-label>
+    <input matInput placeholder="Ex. Beau Gosse" formControlName="pseudo" />
+    @if (formulaire.get('pseudo')?.hasError('required')) {
+      <mat-error>Le pseudo est requis</mat-error>
+    } @else if (formulaire.get('pseudo')?.hasError('maxlength')) {
+      <mat-error>Le pseudo ne peut pas dépasser 20 caractères</mat-error>
     }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Mensurations</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Ex. 100-90-80"
+      formControlName="mensurations"
+    />
+    <mat-error>Champ requis</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Taille (cm)</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="Ex. 180"
+      formControlName="taille_cm"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Poids (kg)</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="Ex. 75"
+      formControlName="poids_kg"
+    />
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Description</mat-label>
     <textarea
       matInput
-      placeholder="Ex. Un super pizza"
+      placeholder="Ex. Espiègle et charmeur"
       formControlName="description"
     ></textarea>
-    <mat-error
-      >La description ne peut pas avoir plus de 50 caractères
-    </mat-error>
+    @if (formulaire.get('description')?.hasError('maxlength')) {
+      <mat-error>
+        La description ne peut pas dépasser 50 caractères
+      </mat-error>
+    }
   </mat-form-field>
 
-  <button mat-raised-button type="submit">Ajouter le produit</button>
+  <mat-form-field>
+    <mat-label>Date de naissance</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date_naissance" />
+    <mat-datepicker-toggle matSuffix [for]="picker" />
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit">Ajouter le modèle</button>
 </form>

@@ -8,12 +8,14 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { NotificationService } from '../../services/notification.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-produit',
-  imports: [FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
+  imports: [FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './edit-produit.component.html',
   styleUrl: './edit-produit.component.scss',
 })
@@ -28,18 +30,18 @@ export class EditProduitComponent {
     description: ['', [Validators.maxLength(50)]],
   });
 
-  onAjoutProduit() {
+  onAjoutModel() {
     if (this.formulaire.valid) {
       this.http
-        .post('http://localhost:5000/produit', this.formulaire.value)
+        .post('http://localhost:5000/model', this.formulaire.value)
         .subscribe({
           next: (reponse) => {
-            this.notification.show('Le produit a bien été ajouté', 'valid');
+            this.notification.show('Le model a bien été ajouté', 'valid');
             this.router.navigateByUrl('/accueil');
           },
           error: (erreur) => {
             if (erreur.status === 409) {
-              this.notification.show('Un produit porte déjà ce nom', 'error');
+              this.notification.show('Un model porte déjà ce pseudo', 'error');
             }
           },
         });
