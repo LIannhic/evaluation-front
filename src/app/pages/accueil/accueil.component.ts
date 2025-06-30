@@ -16,27 +16,27 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AccueilComponent {
   http = inject(HttpClient);
-  produits: any = [];
+  models: any = [];
   notification = inject(NotificationService);
   authService = inject(AuthService);
 
   ngOnInit() {
-    this.raffraichirProduit();
+    this.raffraichirModel();
   }
 
-  raffraichirProduit() {
+  raffraichirModel() {
     this.http
-      .get('http://localhost:5000/produits/liste')
-      .subscribe((produits) => (this.produits = produits));
+      .get('http://localhost:5000/models/liste')
+      .subscribe((models) => (this.models = models));
   }
 
-  onClickSuppressionProduit(item: any) {
-    if (confirm('Voulez-vous vraiment supprimer ce produit ?')) {
+  onClickSuppressionModel(item: any) {
+    if (confirm('Voulez-vous vraiment supprimer ce model ?')) {
       this.http
-        .delete('http://localhost:5000/produit/' + item.id)
+        .delete('http://localhost:5000/model/' + item.id_model)
         .subscribe((reponse) => {
-          this.raffraichirProduit();
-          this.notification.show('Le produit a bien été supprimé', 'valid');
+          this.raffraichirModel();
+          this.notification.show('Le model a bien été supprimé', 'valid');
         });
     }
   }
