@@ -25,10 +25,15 @@ export class EditProduitComponent {
   notification = inject(NotificationService);
   router = inject(Router);
 
-  formulaire = this.formBuilder.group({
-    nom: ['', [Validators.required, Validators.maxLength(20)]],
-    description: ['', [Validators.maxLength(50)]],
-  });
+formulaire = this.formBuilder.group({
+  pseudo: ['', [Validators.required, Validators.maxLength(20)]],
+  description: ['', [Validators.maxLength(50)]],
+  mensurations: [null, [Validators.required]],
+  taille_cm: [null, [Validators.min(50), Validators.max(300)]],
+  poids_kg: [null, [Validators.min(20), Validators.max(300)]],
+  date_naissance: [null, [Validators.required]],
+});
+
 
   onAjoutModel() {
     if (this.formulaire.valid) {
