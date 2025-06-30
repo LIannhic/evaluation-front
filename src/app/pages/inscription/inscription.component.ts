@@ -24,6 +24,7 @@ export class InscriptionComponent {
   router = inject(Router);
 
   formulaire = this.formBuilder.group({
+    nom: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
