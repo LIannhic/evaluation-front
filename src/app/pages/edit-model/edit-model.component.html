@@ -1,5 +1,5 @@
 <form (ngSubmit)="onAjoutModel()" [formGroup]="formulaire">
-  <mat-form-field class="w-full">
+  <mat-form-field>
     <mat-label>Pseudo</mat-label>
     <input matInput placeholder="Ex. Beau Gosse" formControlName="pseudo" />
     @if (formulaire.get('pseudo')?.hasError('required')) {
